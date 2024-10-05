@@ -34,8 +34,9 @@
                 <img src="https://i.imgur.com/wvlePif.png" alt="Silk Touch Spawner">
                 <h3>Silk Touch Spawner</h3>
                 <p>The ability to break and collect spawner using a Silk Touch-enchanted pickaxe!</p>
-                <a href="https://www.planetminecraft.com/data-pack/krixh99-s-silk-touch-spawner-mc-1-21-1-21-1/" target="_blank" class="btn" onclick="event.stopPropagation()">View on Planet Minecraft</a>
+                <a href="https://www.planetminecraft.com/data-pack/krixh99-s-silk-touch-spawner-mc-1-21-1-21-1/" target="_blank" class="btn" onclick="event.stopPropagation()">View on PlanetMC</a>
             </div>
+
             <!-- InfoBox for Data Pack 1 -->
             <div id="infoBox1" class="infoBoxOverlay" onclick="hideInfo('infoBox1')">
                 <div class="infoBox" onclick="event.stopPropagation()">
@@ -67,7 +68,43 @@
                 </div>
             </div>
 
-            <!-- More data packs can go here -->
+            <!-- Data Pack 2 -->
+            <div class="pack" onclick="showInfo('infoBox2')">
+                <img src="https://i.imgur.com/xoyykYp.png" alt="Crop Harvesting">
+                <h3>Crop Harvesting</h3>
+                <p>This data pack is designed to improve the crop harvesting experience in Minecraft</p>
+                <a href="" target="_blank" class="btn" onclick="event.stopPropagation()">View on PlanetMC</a>
+            </div>
+
+            <!-- InfoBox for Data Pack 2 -->
+            <div id="infoBox2" class="infoBoxOverlay" onclick="hideInfo('infoBox2')">
+                <div class="infoBox" onclick="event.stopPropagation()">
+                    <button class="closeButton" onclick="hideInfo('infoBox2')">Close</button>
+                    <!-- Title Section -->
+                    <h2 class="infoBox-title">Crop Harvesting Data Pack</h2>
+                    <p class="infoBox-description">This data pack is designed to improve the crop harvesting experience in Minecraft! With KrixH99's Crop Harvesting, collecting crops becomes smoother and more efficient. Whether you're harvesting wheat, carrots, potatoes, or other crops, this data pack will streamline the process, saving you time and effort in your farming adventures.</p>
+                    <!-- Features Section -->
+                    <div class="features-section">
+                        <h3>Key Features:</h3>
+                        <ul class="features-list">
+                            <li>Enhances crop harvesting mechanics for a more efficient farming experience.</li>
+                            <li>Compatible with all standard crops such as wheat, carrots, potatoes, beetroots, etc.</li>
+                            <li>Fully compatible with Minecraft 1.21 and 1.21.1.</li>
+                        </ul>
+                    </div>         
+                    <!-- Installation Section -->
+                    <div class="installation-section">
+                        <h3>Installation:</h3>
+                        <p>Follow these steps to install the data pack:</p>
+                        <pre class="code-block">Download the <strong>.zip</strong> data pack file.<br>Extract the <strong>.zip</strong> file into your world’s <strong>datapacks</strong> folder.<br>Ensure that you <strong>extract</strong> the contents of the archive, not just place the <strong>.zip</strong> file in the folder.<br>Start or load your world, and the data pack will be active.
+                        </pre>
+                    </div>
+                    <!-- Adding a divider here -->
+                    <div class="divider"></div>           
+                    <!-- Additional Information -->
+                    <p>Enjoy faster and easier crop harvesting in your Minecraft world! If you have any issues or suggestions, feel free to leave a comment.</p>
+                </div>
+            </div>
 
         </section>
     </div>
@@ -77,9 +114,24 @@
     </footer>
 
     <script>
+        // Function to check if the href is empty, and update the button
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.pack .btn');
+            buttons.forEach(button => {
+                if (!button.getAttribute('href')) {
+                    button.textContent = "SOON"; 
+                    button.removeAttribute('href'); 
+                    button.style.cursor = "default";
+                    button.onclick = function(event) {
+                        event.preventDefault();
+                    };
+                }
+            });
+        });
+
         function showInfo(infoBoxId) {
             var infoBoxOverlay = document.getElementById(infoBoxId);
-            infoBoxOverlay.style.display = "flex"; // Flex to center the content
+            infoBoxOverlay.style.display = "flex";
         }
 
         function hideInfo(infoBoxId) {
