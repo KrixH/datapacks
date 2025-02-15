@@ -38,7 +38,7 @@ const datapacks = [
             "Perfect for players preparing to fight the Wither Boss."
         ],
         downloadLink: null,
-        planetMinecraft: "https://www.planetminecraft.com/data-pack/krixh99-s-silk-touch-spawner-mc-1-21-1-21-1/",
+        planetMinecraft: "https://www.planetminecraft.com/data-pack/krixh99-s-enhanced-wither-skull-mc-1-20-1-21/",
         installation: [
             "Download the .zip data pack file.",
             "Extract the .zip file into your world’s datapacks folder.",
