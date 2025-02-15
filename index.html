@@ -1,152 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataPack | @Krixh99</title>
-    <link rel="icon" type="image/x-icon" href="https://www.freeiconspng.com/thumbs/minecraft-server-icon/minecraft-server-icon-4.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Minecraft Data Packs | @Krixh99">
-    <meta property="og:description" content="Explore my latest Minecraft data packs collection. Customize your Minecraft world with new features and tweaks!">
-    <meta property="og:image" content="https://c4.wallpaperflare.com/wallpaper/516/973/270/minecraft-cherry-blossom-hd-wallpaper-preview.jpg">
-    <meta property="og:url" content="https://krixh.github.io/datapacks">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Minecraft Data Packs">
-    <meta property="og:locale" content="en_US">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>datapackHUB | @krixh99</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://www.freeiconspng.com/thumbs/minecraft-server-icon/minecraft-server-icon-4.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="parallax-bg"></div>
+    
     <header>
-        <h1>DataPacks | @Krixh99</h1>
+        <h1 class="neon-title">
+            <span class="dpx">DataPack</span><span class="hub">HUB</span>
+        </h1>
     </header>
-
-    <div class="container">
-        <section class="packs-section">
-
-            <!-- Data Pack 1 -->
-            <div class="pack" onclick="showInfo('infoBox1')">
-                <img src="https://i.imgur.com/wvlePif.png" alt="Silk Touch Spawner">
-                <h3>Silk Touch Spawner</h3>
-                <p>The ability to break and collect spawner using a Silk Touch-enchanted pickaxe!</p>
-                <a href="https://www.planetminecraft.com/data-pack/krixh99-s-silk-touch-spawner-mc-1-21-1-21-1/" target="_blank" class="btn" onclick="event.stopPropagation()">View on PlanetMC</a>
+    <main> 
+        <section class="datapack-grid" id="datapackContainer"></section>
+        <div id="contentContainer"></div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>
+                    <a href="mailto:25cc18q66@mozmail.com" class="email-link">Email</a>
+                </p>
             </div>
-
-            <!-- InfoBox for Data Pack 1 -->
-            <div id="infoBox1" class="infoBoxOverlay" onclick="hideInfo('infoBox1')">
-                <div class="infoBox" onclick="event.stopPropagation()">
-                    <button class="closeButton" onclick="hideInfo('infoBox1')">Close</button>
-                    <!-- Title Section -->
-                    <h2 class="infoBox-title">Silk Touch Spawner Data Pack</h2>
-                    <p class="infoBox-description">This data pack introduces a highly requested feature: the ability to break and collect spawner blocks using a Silk Touch-enchanted pickaxe!</p>
-                    <!-- Features Section -->
-                    <div class="features-section">
-                        <h3>Key Features:</h3>
-                        <ul class="features-list">
-                            <li>Break spawners with a Silk Touch-enchanted pickaxe and collect them as items.</li>
-                            <li>Works only with pickaxes enchanted with Silk Touch.</li>
-                            <li>Players do not receive XP when breaking spawners obtained with Silk Touch, preventing exploitation of XP farming bugs.</li>
-                            <li>Fully compatible with Minecraft 1.21 and 1.21.1.</li>
-                        </ul>
-                    </div>         
-                    <!-- Installation Section -->
-                    <div class="installation-section">
-                        <h3>Installation:</h3>
-                        <p>Follow these steps to install the data pack:</p>
-                        <pre class="code-block">Download the <strong>.zip</strong> data pack file.<br>Extract the <strong>.zip</strong> file into your world’s <strong>datapacks</strong> folder.<br>Ensure that you <strong>extract</strong> the contents of the archive, not just place the <strong>.zip</strong> file in the folder.<br>Start or load your world, and the data pack will be active.
-                        </pre>
-                    </div>
-                    <!-- Adding a divider here -->
-                    <div class="divider"></div>           
-                    <!-- Additional Information -->
-                    <p>With this data pack, you no longer have to worry about losing mob spawners when mining. Simply use a pickaxe with the Silk Touch enchantment, and the spawner will drop as an item. You can then place it anywhere you like, allowing you to build custom mob farms and relocate spawners for more flexible gameplay.</p>
+            <div class="footer-section">
+                <h4>Social Media</h4>
+                <div class="social-links">
+                    <a href="https://x.com/_KrixH_" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.planetminecraft.com/member/krixh99/" target="_blank" class="planetmc-link">
+                        <i class="custom-icon"></i>
+                    </a>
                 </div>
             </div>
-
-            <!-- Data Pack 2 -->
-            <div class="pack" onclick="showInfo('infoBox2')">
-                <img src="https://i.imgur.com/xoyykYp.png" alt="Crop Harvesting">
-                <h3>Crop Harvesting</h3>
-                <p>This data pack is designed to improve the crop harvesting experience in Minecraft</p>
-                <a href="" target="_blank" class="btn" onclick="event.stopPropagation()">View on PlanetMC</a>
-            </div>
-
-            <!-- InfoBox for Data Pack 2 -->
-            <div id="infoBox2" class="infoBoxOverlay" onclick="hideInfo('infoBox2')">
-                <div class="infoBox" onclick="event.stopPropagation()">
-                    <button class="closeButton" onclick="hideInfo('infoBox2')">Close</button>
-                    <!-- Title Section -->
-                    <h2 class="infoBox-title">Crop Harvesting Data Pack</h2>
-                    <p class="infoBox-description">This data pack is designed to improve the crop harvesting experience in Minecraft! With KrixH99's Crop Harvesting, collecting crops becomes smoother and more efficient. Whether you're harvesting wheat, carrots, potatoes, or other crops, this data pack will streamline the process, saving you time and effort in your farming adventures.</p>
-                    <!-- Features Section -->
-                    <div class="features-section">
-                        <h3>Key Features:</h3>
-                        <ul class="features-list">
-                            <li>Enhances crop harvesting mechanics for a more efficient farming experience.</li>
-                            <li>Compatible with all standard crops such as wheat, carrots, potatoes, beetroots, etc.</li>
-                            <li>Fully compatible with Minecraft 1.21 and 1.21.1.</li>
-                        </ul>
-                    </div>         
-                    <!-- Installation Section -->
-                    <div class="installation-section">
-                        <h3>Installation:</h3>
-                        <p>Follow these steps to install the data pack:</p>
-                        <pre class="code-block">Download the <strong>.zip</strong> data pack file.<br>Extract the <strong>.zip</strong> file into your world’s <strong>datapacks</strong> folder.<br>Ensure that you <strong>extract</strong> the contents of the archive, not just place the <strong>.zip</strong> file in the folder.<br>Start or load your world, and the data pack will be active.
-                        </pre>
-                    </div>
-                    <!-- Adding a divider here -->
-                    <div class="divider"></div>           
-                    <!-- Additional Information -->
-                    <p>Enjoy faster and easier crop harvesting in your Minecraft world! If you have any issues or suggestions, feel free to leave a comment.</p>
-                </div>
-            </div>
-
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Minecraft Data Pack Collection by KrixH99</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024-<span id="year"></span> All rights reserved.  datapackHUB | @krixh99</p>
+            <small class="disclaimer">
+                NOT A OFFICIAL MINECRAFT PRODUCT. NOT APPROVED OR ASSOCIATED WITH MOJANG. Minecraft is copyrighted by Mojang Studios and is not affiliated with this site. Get the game!
+            </small>
+        </div>
     </footer>
 
-    <script>
-        // Function to check if the href is empty, and update the button
-        document.addEventListener("DOMContentLoaded", function() {
-            const buttons = document.querySelectorAll('.pack .btn');
-            buttons.forEach(button => {
-                if (!button.getAttribute('href')) {
-                    button.textContent = "SOON"; 
-                    button.removeAttribute('href'); 
-                    button.style.cursor = "default";
-                    button.onclick = function(event) {
-                        event.preventDefault();
-                    };
-                }
-            });
-        });
-
-        function showInfo(infoBoxId) {
-            var infoBoxOverlay = document.getElementById(infoBoxId);
-            infoBoxOverlay.style.display = "flex";
-        }
-
-        function hideInfo(infoBoxId) {
-            var infoBoxOverlay = document.getElementById(infoBoxId);
-            infoBoxOverlay.style.display = "none";
-        }
-
-        // Close info box when pressing ESC key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                document.querySelectorAll('.infoBoxOverlay').forEach(function(infoBox) {
-                    infoBox.style.display = 'none';
-                });
-            }
-        });
-    </script>
+    <script src="datapacks.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

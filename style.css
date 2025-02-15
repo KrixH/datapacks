@@ -1,0 +1,577 @@
+:root {
+    --primary: #2ecc71;
+    --secondary: #e67e22;
+    --dark: #1a1a1a;
+    --darker: #111;
+    --light: #ecf0f1;
+    --transition: all 0.3s ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--darker);
+    color: var(--light);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* DATAPACK GRID */
+.datapack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.datapack-box {
+    background: rgba(40, 40, 40, 0.9);
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.datapack-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+}
+
+.datapack-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, var(--primary), transparent);
+    transform: rotate(45deg);
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.datapack-box:hover::before {
+    opacity: 0.1;
+    animation: shine 3s infinite;
+}
+
+.icon-3d {
+    width: 128px;
+    height: 128px;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    position: relative;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* MODAL BOX */
+.content-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(40, 40, 40, 0.98);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.2);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--darker);
+}
+
+.content-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-section::-webkit-scrollbar-thumb {
+    background-color: var(--primary); 
+    border-radius: 4px;
+}
+
+.content-section::-webkit-scrollbar-track {
+    background-color: var(--darker);
+}
+
+/**Görgető sáv **/
+:-webkit-scrollbar {
+    width: 8px;
+}
+:-webkit-scrollbar-thumb {
+    background-color: var(--primary); 
+    border-radius: 4px;
+}
+:-webkit-scrollbar-track {
+    background-color: var(--darker);
+}
+.content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.description, .detailed-description, .key-features, .installation {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.description h3, .detailed-description h3, .key-features h3, .installation h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.description p, .detailed-description p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.key-features ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.key-features ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.installation ol {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.installation ol li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.content-section.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.content-header {
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-header h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 2rem;
+    line-height: 1;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    color: var(--primary);
+    transform: rotate(90deg);
+}
+
+.content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.image-carousel {
+    position: relative;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.image-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: var(--transition);
+    position: absolute;
+}
+
+.image-carousel img.active {
+    opacity: 1;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+.description, .installation {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.description h3, .installation h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.description p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.installation ol {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.installation ol li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+    color: #2ecc71;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+}
+
+
+.download-btn, .planet-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--light);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    border-color: #27ae60;
+}
+
+.planet-btn {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    border-color: #d35400;
+}
+
+.download-btn:hover, .planet-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+.download-btn:hover {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+.planet-btn:hover {
+    background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+}
+
+/* MODAL BACKDROP */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* FOOTER */
+.site-footer {
+    background: rgba(0,0,0,0.9);
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--primary);
+    margin-top: auto;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    background: var(--primary);
+}
+
+.social-links a[href*="planetminecraft"] i {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background: url('https://i.imgur.com/ndmOXld.png') center/contain no-repeat;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Footer disclaimer */
+.footer-bottom .disclaimer {
+    display: block;
+    font-size: 0.75rem; /* Nagyon kicsi méret */
+    color: rgba(255, 255, 255, 0.5); /* Világos szürke szín */
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.footer-bottom .disclaimer a {
+    color: var(--primary); /* Zöld szín a linkeknek */
+    text-decoration: none;
+}
+
+.footer-bottom .disclaimer a:hover {
+    text-decoration: underline; /* Aláhúzás hover esetén */
+}
+
+.email-link {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.email-link:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+/* NEON TITLE */
+.neon-title {
+    font-family: 'Courier New', monospace;
+    font-size: 4rem;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+    text-shadow: 0 0 10px #2ecc71;
+}
+
+.dpx {
+    color: #2ecc71;
+    background: linear-gradient(45deg, #2ecc71 0%, #27ae60 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    position: relative;
+    padding-right: 0.5rem;
+}
+
+.hub {
+    color: #e74c3c;
+    text-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
+    position: relative;
+}
+
+.neon-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(46,204,113,1) 0%, 
+        rgba(231,76,60,1) 100%);
+    box-shadow: 0 0 20px rgba(46,204,113,0.5),
+                0 0 20px rgba(231,76,60,0.5);
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .content-section {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .content-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .download-btn, .planet-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .neon-title {
+        font-size: 2.5rem;
+    }
+
+    .neon-title::after {
+        bottom: -5px;
+        height: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-title {
+        font-size: 2rem;
+        flex-direction: column;
+    }
+
+    .dpx {
+        padding-right: 0;
+    }
+
+    .hub {
+        margin-top: -5px;
+    }
+}
