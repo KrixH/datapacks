@@ -74,8 +74,33 @@ const datapacks = [
             "Start or load your world, and the data pack will be active.",
             "If you're playing on a server, you may need to restart the server for the data pack to be enabled."
         ]
+    },
+    {
+        "id": 4,
+        "title": "Double Shulker Shells",
+        "version": "1.21+",
+        "icon": "https://i.imgur.com/j1pOlvG.png",
+        "images": ["https://i.imgur.com/jw5vcPP.png"],
+        "description": "This data pack ensures that Shulkers now drop 2 Shulker Shells instead of 1, making your farming and crafting much more efficient!",
+        "detailedDescription": "With this data pack, every Shulker killed will drop two Shulker Shells instead of just one. This change significantly improves farming efficiency, allowing players to craft more Shulker Boxes and enhance storage capabilities. Whether you're looking to build massive storage systems or simply want to improve the effectiveness of your Shulker farms, this tweak is perfect for you. The change also ensures more convenient access to Shulker Shells when preparing for adventure or building.",
+        "keyFeatures": [
+            "Shulkers now drop 2 Shulker Shells per kill.",
+            "Increased Shulker farming efficiency.",
+            "Perfect for players looking to build large storage systems with Shulker Boxes.",
+            "Great for those preparing for adventures or large-scale projects.",
+            "Fully compatible with Minecraft 1.21 and newer versions."
+        ],
+        "downloadLink": "soon",
+        "planetMinecraft": "soon", //https://www.planetminecraft.com/data-pack/double-shulker-shells-mc-1-20-1-21/ :)
+        "releaseDate": "2025-02-26 12:00",
+        "installation": [
+            "Download the .zip data pack file.",
+            "Extract the .zip file into your world's datapacks folder.",
+            "Ensure that you extract the contents of the archive, not just place the .zip file in the folder.",
+            "Start or load your world, and the data pack will be active.",
+            "If you're playing on a server, you may need to restart the server for the data pack to be enabled."
+        ]
     }
-      
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,6 +128,21 @@ function generateHTML() {
         `;
         
         const hasMultipleImages = pack.images.length > 1;
+        const isSoon = pack.downloadLink === "soon" && pack.planetMinecraft === "soon";
+        let countdownHTML = '';
+        if (pack.releaseDate) {
+            countdownHTML = `
+                <div class="countdown-timer">
+                    <p>Release in:</p>
+                    <div class="timer">
+                        <span class="days">0</span>d 
+                        <span class="hours">0</span>h 
+                        <span class="minutes">0</span>m 
+                        <span class="seconds">0</span>s
+                    </div>
+                </div>
+            `;
+        }
         
         contentContainer.innerHTML += `
             <section class="content-section" id="content${pack.id}">
@@ -143,11 +183,43 @@ function generateHTML() {
                         </ol>
                     </div>
                     <div class="download-buttons">
-                        ${pack.downloadLink ? `<a href="${pack.downloadLink}" class="download-btn" target="_blank">Download</a>` : ''}
-                        ${pack.planetMinecraft ? `<a href="${pack.planetMinecraft}" class="planet-btn" target="_blank">PlanetMinecraft </a>` : ''}
+                        ${isSoon ? 
+                            (pack.releaseDate ? countdownHTML : `<p class="soon-text">SOON</p>`) : 
+                            `${pack.downloadLink ? `<a href="${pack.downloadLink}" class="download-btn" target="_blank">Download</a>` : ''}
+                            ${pack.planetMinecraft ? `<a href="${pack.planetMinecraft}" class="planet-btn" target="_blank">PlanetMinecraft</a>` : ''}`
+                        }
                     </div>
                 </div>
             </section>
         `;
+
+        if (pack.releaseDate) {
+            const releaseDate = new Date(pack.releaseDate).getTime();
+            const countdownTimer = document.querySelector(`#content${pack.id} .countdown-timer .timer`);
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const timeLeft = releaseDate - now;
+
+                if (timeLeft > 0) {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                    countdownTimer.innerHTML = `
+                        <span class="days">${days}</span>d 
+                        <span class="hours">${hours}</span>h 
+                        <span class="minutes">${minutes}</span>m 
+                        <span class="seconds">${seconds}</span>s
+                    `;
+                } else {
+                    countdownTimer.innerHTML = "Released!";
+                }
+            };
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
     });
 }
