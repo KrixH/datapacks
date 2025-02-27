@@ -91,8 +91,8 @@ const datapacks = [
             "Fully compatible with Minecraft 1.21 and newer versions."
         ],
         "downloadLink": "soon",
-        "planetMinecraft": "soon", //https://www.planetminecraft.com/data-pack/double-shulker-shells-mc-1-20-1-21/ :)
-        "releaseDate": "2025-02-26 12:00",
+        "planetMinecraft": "soon",
+        "releaseDate": "2025-05-01 12:00",
         "installation": [
             "Download the .zip data pack file.",
             "Extract the .zip file into your world's datapacks folder.",
