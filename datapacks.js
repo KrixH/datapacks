@@ -39,7 +39,7 @@ const datapacks = [
             "Fully compatible with Minecraft 1.21 and 1.21+ versions.",
 
         ],
-        downloadLink: null,
+        downloadLink: "https://s3.amazonaws.com/static.planetminecraft.com/files/resource_media/datapack/enhancedwitherskull-v1-0-0-by-krixh99-e460.zip?response-content-disposition=attachment%3B%20filename%3Denhancedwitherskull-v1-0-0-by-krixh99.zip&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJ5VRI6NCTKXXUSGQ%2F20251123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251123T184133Z&X-Amz-SignedHeaders=host&X-Amz-Expires=23400&X-Amz-Signature=12412c903e680d1cdf28020e442708c6bd86cff1856ffea9ba46350505b017b2",
         planetMinecraft: "https://www.planetminecraft.com/data-pack/krixh99-s-enhanced-wither-skull-mc-1-20-1-21/",
         installation: [
             "Download the .zip data pack file.",
